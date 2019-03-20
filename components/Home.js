@@ -3,9 +3,8 @@ import { StyleSheet, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import FeedPost from './FeedPost';
-import bosImage from '../assets/bos.png';
-import laImage from '../assets/la.png';
-import rutlandImage from '../assets/rutland.png';
+
+const feedPostContent = require('../dummy-data/HomeFeedPostContent');
 
 const styles = StyleSheet.create({
   container: {
@@ -23,46 +22,6 @@ const styles = StyleSheet.create({
   }
 });
 
-//Dummy data 
-const feedPostContent = [
-  {
-    pic: bosImage,
-    likes: 98,
-    userName: 'bob_smith',
-    caption: "This is my caption for my really really cool IG post, it's lit. Random words.",
-    time: '8 MINUTES AGO'
-
-  }, 
-  {
-    pic: laImage,
-    likes: 77,
-    userName: 'traveler99',
-    caption: "LA!",
-    time: '22 MINUTES AGO'
-  },
-  {
-    pic: rutlandImage,
-    likes: 1023,
-    userName: 'g00fyGuy',
-    caption: 'Boston skies',
-    time: '26 MINUTES AGO'
-  }
-];
-
-const feedPosts = feedPostContent.map((post, i) => {
-  return (
-     <FeedPost 
-        key={i}
-        pic={post.pic}  
-        likes={post.likes}  
-        userName={post.userName}
-        caption={post.caption}
-        time={post.time}
-    />
-  )
-})
-
-
 export default class Home extends React.Component {
 
   static navigationOptions = {
@@ -71,10 +30,25 @@ export default class Home extends React.Component {
       headerRight: <Icon name="send" style={styles.headerRightIcon}/>,
   };
 
+  displayFeedPosts = () => (
+    feedPostContent.map((post, i) => {
+      return (
+         <FeedPost 
+            key={i}
+            pic={post.pic}  
+            likes={post.likes}  
+            userName={post.userName}
+            caption={post.caption}
+            time={post.time}
+        />
+      )    
+    })
+  );
+
   render() {
     return (
       <ScrollView style={styles.container}>
-        {feedPosts}
+        {this.displayFeedPosts()}
       </ScrollView>
     );
   }

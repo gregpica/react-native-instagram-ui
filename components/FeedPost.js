@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconFeather from 'react-native-vector-icons/Feather';
+import { TOTAL_WIDTH } from '../constants';
 
 
 const styles = StyleSheet.create({
@@ -25,8 +26,8 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-end',
     },
     pic: {
-      height: Dimensions.get('window').width,
-      width: Dimensions.get('window').width
+      height: TOTAL_WIDTH,
+      width: TOTAL_WIDTH
     },
     likes: {
       flexDirection: 'row',

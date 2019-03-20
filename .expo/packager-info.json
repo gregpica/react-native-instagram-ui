@@ -1,10 +1,10 @@
 {
-  "devToolsPort": 19003,
+  "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 12264,
+  "packagerPid": 1892,
   "expoServerNgrokUrl": "https://55-ukn.anonymous.instagram-ui.exp.direct",
   "packagerNgrokUrl": "https://packager.55-ukn.anonymous.instagram-ui.exp.direct",
-  "ngrokPid": 12288,
+  "ngrokPid": 1924,
   "webpackServerPort": null
 }

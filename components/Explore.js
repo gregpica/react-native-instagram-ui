@@ -1,23 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ExploreCollageLargeLeft from './ExploreCollageLargeLeft';
 import ExploreCollageLargeRight from './ExploreCollageLargeRight';
-import { TOTAL_WIDTH, THIRD_OF_WIDTH, FOURTH_OF_WIDTH, FIFTH_OF_WIDTH } from '../constants';
+import ExploreCategory from './ExploreCategory';
+import { TOTAL_WIDTH, THIRD_OF_WIDTH, FOURTH_OF_WIDTH } from '../constants';
 
 const images = require('../dummy-data/ExploreImages');
 const categories = require('../dummy-data/ExploreCategories');
 
-const categoryWidth = TOTAL_WIDTH * .28;
-
 const styles = StyleSheet.create({
+  header: {
+    height: 30,
+    width: TOTAL_WIDTH,
+    backgroundColor: 'white'
+  },
   container: {
     backgroundColor: '#fff',
     flexDirection: 'column',
     alignItems: 'center'
-  },
-  tabBarIcon: {
-    fontSize: 22
   },
   searchWrapper: {
     flexDirection: 'row',
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     height: 28,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 45
+    marginTop: 10
   },
   searchText: {
     color: '#666666',
@@ -36,17 +37,10 @@ const styles = StyleSheet.create({
   searchIcon: {
     color: '#666666'
   },
-  categories: {
+  categoriesWrapper: {
     height: FOURTH_OF_WIDTH,
     flexDirection: 'row',
     alignItems: 'center'
-  },
-  category: {
-    width: categoryWidth,
-    height: FIFTH_OF_WIDTH,
-    marginLeft: 10,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
   },
   smallImage: {
     height: THIRD_OF_WIDTH - (1/2),
@@ -60,16 +54,7 @@ const styles = StyleSheet.create({
   borderBottom: {
     borderColor: 'white',
     borderBottomWidth: 1
-  },
-  categoryText: {
-    color: 'white',
-    marginBottom: 10,
-    fontWeight: '700',
-    textShadowColor: 'black',
-    textShadowRadius: 10,
-    textShadowOffset: {width: -1, height: 1}
   }
-
 });
 
 const isCenterColumnImage = index => ((index + 2) % 9 === 0 || (index + 5) % 9 === 0) ? true : false;
@@ -125,7 +110,7 @@ const getCollageComponent = (index, isLargeImageOnRight, prev, prevPrev, image) 
 export default class Explore extends React.Component {
   
   static navigationOptions = {
-    tabBarIcon: ({ tintColor }) => <Icon name="ios-search" style={[ styles.tabBarIcon, { color: tintColor}]}/>,
+    header: <View style={styles.header}></View>
   }
 
   displayImages = () => {
@@ -159,9 +144,12 @@ export default class Explore extends React.Component {
         let blurRadius = 0;
         i === 0 ? blurRadius = 25 : null;
         return (
-          <ImageBackground key={i} blurRadius={blurRadius} imageStyle={{borderRadius: 10}} source={category.image} style={styles.category}>
-            <Text style={styles.categoryText}>{category.text}</Text>
-          </ImageBackground>
+          <ExploreCategory 
+            key={i}
+            text={category.text}
+            image={category.image}
+            blurRadius={blurRadius}
+          />
         )
     })
    );
@@ -175,7 +163,7 @@ export default class Explore extends React.Component {
         </View>
         <View style={styles.rowWrapper}>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}> 
-            <View style={styles.categories}>
+            <View style={styles.categoriesWrapper}>
               {this.displayCategories()}
             </View>
           </ScrollView>

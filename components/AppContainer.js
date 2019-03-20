@@ -9,19 +9,26 @@ import Notifications from './Notifications';
 import Profile from './Profile';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-
 const HomeStack = createStackNavigator({
   HomeStack: {
     screen: Home
   }
 });
 
-const styles = StyleSheet.create({
-  homeTabBarIcon: {
-    fontSize: 20
+const ExploreStack = createStackNavigator({
+  ExploreStack: {
+    screen: Explore
   }
 });
 
+const styles = StyleSheet.create({
+  homeTabBarIcon: {
+    fontSize: 20
+  },
+  exploreTabBarIcon: {
+    fontSize: 22
+  }
+});
 
 const AppTabNavigator = createBottomTabNavigator({
   HomeTab: {
@@ -31,7 +38,10 @@ const AppTabNavigator = createBottomTabNavigator({
     }
   },
   ExploreTab: {
-      screen: Explore
+      screen: ExploreStack,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => <Icon name="ios-search" style={[ styles.exploreTabBarIcon, { color: tintColor}]}/>,
+      }
   },
   MediaUploadTab: {
       screen: MediaUpload
@@ -51,8 +61,6 @@ const AppTabNavigator = createBottomTabNavigator({
     inactiveTintColor: '#4a4b4c'
   }
 });
-
-
 
 const AppContainer = createAppContainer(AppTabNavigator);
 

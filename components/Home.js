@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-import FeedPost from './FeedPost';
+import HomeFeedPost from './HomeFeedPost';
 
 const feedPostContent = require('../dummy-data/HomeFeedPostContent');
 
@@ -33,7 +33,7 @@ export default class Home extends React.Component {
   displayFeedPosts = () => (
     feedPostContent.map((post, i) => {
       return (
-         <FeedPost 
+         <HomeFeedPost 
             key={i}
             pic={post.pic}  
             likes={post.likes}  

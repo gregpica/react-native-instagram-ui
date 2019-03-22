@@ -76,7 +76,11 @@ export default class Home extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.rowWrapper}>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}> 
+          <ScrollView 
+            horizontal={true} 
+            showsHorizontalScrollIndicator={false} 
+            style={{backgroundColor: OFF_WHITE}}
+          > 
             <View style={styles.storiesWrapper}>
               {this.displayStories()}
             </View>

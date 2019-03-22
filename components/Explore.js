@@ -142,14 +142,12 @@ export default class Explore extends React.Component {
 
    displayCategories = () => (
     categories.map((category, i) => {
-        let blurRadius = 0;
-        i === 0 ? blurRadius = 25 : null;
         return (
           <ExploreCategory 
             key={i}
+            index={i}
             text={category.text}
             image={category.image}
-            blurRadius={blurRadius}
           />
         )
     })

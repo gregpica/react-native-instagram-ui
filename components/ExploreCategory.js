@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         fontWeight: '700',
         textShadowColor: 'black',
-        textShadowRadius: 10,
+        textShadowRadius: 5,
         textShadowOffset: {width: -1, height: 1}
     },
     userPhoto: {

@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     story: {
         width: SEVENTH_OF_WIDTH - 7,
         height: SEVENTH_OF_WIDTH - 7,  
-
     },
     storyText: {
         marginTop: 3,

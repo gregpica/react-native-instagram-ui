@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import { FIFTH_OF_WIDTH } from '../constants';
+import { FIFTH_OF_WIDTH, OFF_WHITE } from '../constants';
 import HomeFeedPost from './HomeFeedPost';
 import HomeStory from './HomeStory';
 
@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
     height: FIFTH_OF_WIDTH + 5,
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 3
+    paddingTop: 3,
+    backgroundColor: OFF_WHITE
   },
   rowWrapper: {
     flexDirection: 'row',
@@ -41,6 +42,7 @@ export default class Home extends React.Component {
       headerLeft: <Icon name="camera" style={styles.headerLeftIcon}/>,
       title: "Instagram",
       headerRight: <Icon name="send" style={styles.headerRightIcon}/>,
+      headerStyle: {backgroundColor: OFF_WHITE}
   };
 
   displayFeedPosts = () => (

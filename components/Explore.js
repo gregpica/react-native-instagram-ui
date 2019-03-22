@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import ExploreCollageLargeLeft from './ExploreCollageLargeLeft';
 import ExploreCollageLargeRight from './ExploreCollageLargeRight';
 import ExploreCategory from './ExploreCategory';
-import { TOTAL_WIDTH, THIRD_OF_WIDTH, FOURTH_OF_WIDTH } from '../constants';
+import { TOTAL_WIDTH, THIRD_OF_WIDTH, FOURTH_OF_WIDTH, OFF_WHITE } from '../constants';
 
 const images = require('../dummy-data/ExploreImages');
 const categories = require('../dummy-data/ExploreCategories');
@@ -13,16 +13,16 @@ const styles = StyleSheet.create({
   header: {
     height: 30,
     width: TOTAL_WIDTH,
-    backgroundColor: 'white'
+    backgroundColor: OFF_WHITE
   },
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: OFF_WHITE,
     flexDirection: 'column',
     alignItems: 'center'
   },
   searchWrapper: {
     flexDirection: 'row',
-    backgroundColor: '#efefef',
+    backgroundColor: '#e5e5e5',
     borderRadius: 5,
     width: '95%',
     height: 28,
@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
   categoriesWrapper: {
     height: FOURTH_OF_WIDTH,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: OFF_WHITE
   },
   smallImage: {
     height: THIRD_OF_WIDTH - (1/2),
@@ -110,7 +111,7 @@ const getCollageComponent = (index, isLargeImageOnRight, prev, prevPrev, image) 
 export default class Explore extends React.Component {
   
   static navigationOptions = {
-    header: <View style={styles.header}></View>
+    header: <View style={styles.header}></View>,
   }
 
   displayImages = () => {

@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import IconFeather from 'react-native-vector-icons/Feather';
 import { TOTAL_WIDTH } from '../constants';
 
-
 const styles = StyleSheet.create({
     iconWrapper: {
       flexDirection: 'row',

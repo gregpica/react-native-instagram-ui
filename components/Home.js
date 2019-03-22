@@ -30,9 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: OFF_WHITE
   },
   rowWrapper: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    backgroundColor: 'white'
+    flexDirection: 'row'
   }
 });
 
@@ -50,11 +48,13 @@ export default class Home extends React.Component {
       return (
          <HomeFeedPost 
             key={i}
-            pic={post.pic}  
+            postImage={post.postImage}  
             likes={post.likes}  
             userName={post.userName}
+            profilePhoto={post.profilePhoto}
             caption={post.caption}
             time={post.time}
+            location={post.location}
         />
       )    
     })

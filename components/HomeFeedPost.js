@@ -2,14 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconFeather from 'react-native-vector-icons/Feather';
-import { TOTAL_WIDTH } from '../constants';
+import { TOTAL_WIDTH, TENTH_OF_WIDTH } from '../constants';
 
 const styles = StyleSheet.create({
-    iconWrapper: {
+    bottomIconsWrapper: {
       flexDirection: 'row',
       marginTop: 5
     },
-    leftIcons: {
+    leftBottomIcons: {
       flex: 2,
       flexDirection: 'row',
       backgroundColor: '#fff',
@@ -17,14 +17,14 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-start',
       paddingLeft: 2,
     },  
-    rightIcons: {
+    rightBottomIcons: {
       flex: 2,
       flexDirection: 'row',
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'flex-end',
     },
-    pic: {
+    postImage: {
       height: TOTAL_WIDTH,
       width: TOTAL_WIDTH
     },
@@ -39,8 +39,7 @@ const styles = StyleSheet.create({
     nameCaptionWrapper: {
       flexDirection: 'row',
       paddingLeft: 10,
-      paddingRight: 10,
-      flexWrap: 'wrap'
+      paddingRight: 10
     },
     userName: {
       fontWeight: '600',
@@ -52,20 +51,54 @@ const styles = StyleSheet.create({
       paddingLeft: 10,
       marginTop: 5,
       marginBottom: 15
+    },
+    profilePhoto: {
+      width: TENTH_OF_WIDTH,
+      height: TENTH_OF_WIDTH,
+      marginRight: 10,
+      marginLeft: 10
+    },
+    location: {
+      fontSize: 12
+    },
+    profilePhotoAndTextWrapper: {
+      flexDirection: 'row',
+      marginTop: 7,
+      marginBottom: 7
+    },
+    headerWrapper: {
+      flexDirection: 'row',
+      justifyContent: 'space-between'
+    },
+    ellipsisIcon: {
+      justifyContent: 'center',
+      marginRight: 15
     }
   });
   
 export default function HomeFeedPost(props) {
     return (
-     <View>
-        <Image source={props.pic} style={styles.pic}/>
-        <View style={styles.iconWrapper}>
-          <View style={styles.leftIcons}>
+      <View>
+        <View style={styles.headerWrapper}>
+          <View style={[styles.profilePhotoAndTextWrapper, {alignItems: props.location ? 'flex-end' : 'center'}]}> 
+            <Image source={props.profilePhoto} style={styles.profilePhoto}/>
+            <View>
+              <Text style={styles.userName}>{props.userName}</Text>
+              <Text style={[styles.location, {display: props.location ? 'flex' : 'none'}]}>{props.location}</Text>
+            </View>
+          </View>
+          <View style={styles.ellipsisIcon}>
+          <IconFeather name="more-horizontal" style={{fontSize: 17}}/>
+          </View>
+        </View>
+        <Image source={props.postImage} style={styles.postImage}/>
+        <View style={styles.bottomIconsWrapper}>
+          <View style={styles.leftBottomIcons}>
             <Icon.Button name="heart-o" backgroundColor='white' color='black'> </Icon.Button>
             <Icon.Button name="comment-o" backgroundColor='white' color='black'> </Icon.Button>
             <IconFeather.Button name="send" backgroundColor='white' color='black'> </IconFeather.Button>
           </View>
-          <View style={styles.rightIcons}>
+          <View style={styles.rightBottomIcons}>
             <Icon.Button name="bookmark-o" backgroundColor='white' color='black'> </Icon.Button>
           </View>
         </View>
@@ -74,7 +107,7 @@ export default function HomeFeedPost(props) {
           <Text>          
               <Text style={styles.userName}>{props.userName}</Text>
               <Text> {props.caption}</Text>
-         </Text>
+          </Text>
         </View>
         <Text style={styles.time}>{props.time}</Text>
       </View>

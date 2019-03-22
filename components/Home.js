@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import { FIFTH_OF_WIDTH } from '../constants';
+import { FIFTH_OF_WIDTH, OFF_WHITE } from '../constants';
 import HomeFeedPost from './HomeFeedPost';
 import HomeStory from './HomeStory';
 
@@ -26,12 +26,11 @@ const styles = StyleSheet.create({
     height: FIFTH_OF_WIDTH + 5,
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 3
+    paddingTop: 3,
+    backgroundColor: OFF_WHITE
   },
   rowWrapper: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    backgroundColor: 'white'
+    flexDirection: 'row'
   }
 });
 
@@ -41,6 +40,7 @@ export default class Home extends React.Component {
       headerLeft: <Icon name="camera" style={styles.headerLeftIcon}/>,
       title: "Instagram",
       headerRight: <Icon name="send" style={styles.headerRightIcon}/>,
+      headerStyle: {backgroundColor: OFF_WHITE}
   };
 
   displayFeedPosts = () => (
@@ -48,11 +48,13 @@ export default class Home extends React.Component {
       return (
          <HomeFeedPost 
             key={i}
-            pic={post.pic}  
+            postImage={post.postImage}  
             likes={post.likes}  
             userName={post.userName}
+            profilePhoto={post.profilePhoto}
             caption={post.caption}
             time={post.time}
+            location={post.location}
         />
       )    
     })
@@ -74,7 +76,11 @@ export default class Home extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.rowWrapper}>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}> 
+          <ScrollView 
+            horizontal={true} 
+            showsHorizontalScrollIndicator={false} 
+            style={{backgroundColor: OFF_WHITE}}
+          > 
             <View style={styles.storiesWrapper}>
               {this.displayStories()}
             </View>
